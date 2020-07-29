@@ -1,42 +1,46 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { ReactComponent as Logo } from "../../assets/crown.svg";
-import "./header.styles.scss";
-import { auth } from "../../firebase/firebase.utils";
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink,
+  // OptionDiv,
+} from "./header.styles";
+
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+
+import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { auth } from "../../firebase/firebase.utils";
 import { selectCartHidden } from "../../redux/cart/cart.selector";
 import { selectCurrentUser } from "../../redux/user/user.selector";
 
 const Header = ({ currentUser, hidden }) => (
-  <div className="header">
-    <Link to="/" className="logo-container">
+  <HeaderContainer>
+    <LogoContainer to={"/"}>
       <Logo className="logo"></Logo>
-    </Link>
+    </LogoContainer>
 
-    <div className="options">
-      <Link to="/shop" className="option">
-        SHOP
-      </Link>
-      <Link to="/contact" className="option">
-        CONTACT
-      </Link>
+    <OptionsContainer>
+      <OptionLink to={"/shop"}>SHOP</OptionLink>
+      <OptionLink to={"/shop"}>CONTACT</OptionLink>
       {currentUser ? (
-        <div className="option" onClick={() => auth.signOut()}>
+        // <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
+        // or
+        <OptionLink as={"div"} onClick={() => auth.signOut()}>
           SIGN OUT
-        </div>
+        </OptionLink>
       ) : (
-        <Link to="/signin" className="option">
-          SIGN IN
-        </Link>
+        <OptionLink to={"/signin"}>SIGN IN</OptionLink>
       )}
       <CartIcon />
-    </div>
+    </OptionsContainer>
+
     {!hidden && <CartDropdown />}
-  </div>
+  </HeaderContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
