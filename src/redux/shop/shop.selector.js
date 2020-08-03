@@ -10,6 +10,7 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
+  // convert JSON into array
   (collections) => Object.values(collections)
   // (collections) => Object.keys(collections).map((key) => collections[key])
 );

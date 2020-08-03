@@ -11,7 +11,9 @@ import CollectionItem from "../collection-item/collection-item.component";
 const CollectionPreview = ({ title, items }) => {
   return (
     <CollectionPreviewContainer>
-      <TitleContainer>{title.toUpperCase()}</TitleContainer>
+      <TitleContainer to={`/shop/${title.toLowerCase()}`}>
+        <h1>{title.toUpperCase()}</h1>
+      </TitleContainer>
       <PreviewContainer>
         {items.map(
           (item, index) =>

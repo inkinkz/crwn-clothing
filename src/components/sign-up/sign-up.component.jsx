@@ -31,6 +31,7 @@ class SignUp extends React.Component {
           email,
           password
         );
+        // displayName will be set through ...additionalData not { displayName } from user
         await createUserProfileDocument(user, { displayName });
         this.setState({
           displayName: "",
