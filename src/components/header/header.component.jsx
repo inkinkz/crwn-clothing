@@ -11,7 +11,7 @@ import {
 } from "./header.styles";
 
 import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import CartDropdownContainer from "../cart-dropdown/cart-dropdown.container";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
@@ -39,7 +39,7 @@ const Header = ({ currentUser, hidden }) => (
       <CartIcon />
     </OptionsContainer>
 
-    {!hidden && <CartDropdown />}
+    {!hidden && <CartDropdownContainer />}
   </HeaderContainer>
 );
 
