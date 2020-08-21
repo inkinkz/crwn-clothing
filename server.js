@@ -10,6 +10,13 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Express v4.16.0++
+// // Parse URL-encoded bodies (as sent by HTML forms)
+// app.use(express.urlencoded());
+
+// // Parse JSON bodies (as sent by API clients)
+// app.use(express.json());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
