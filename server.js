@@ -8,7 +8,6 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-app.use(compression());
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -19,6 +18,7 @@ const port = process.env.PORT || 5000;
 // // Parse JSON bodies (as sent by API clients)
 // app.use(express.json());
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
